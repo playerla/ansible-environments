@@ -1,0 +1,13 @@
+version: '3.4'
+services:
+  compose:
+    image: docker/compose:alpine-1.27.0-rc3
+    command: ["docker-compose", "images"]
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ./docker-compose.yml:/workspace/docker-compose.yml
+    working_dir: /workspace
+  ansible:
+    image: willhallonline/ansible:2.9-alpine
+    command: ["ansible", "--version"]
+  
